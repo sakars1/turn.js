@@ -8,7 +8,7 @@ var has3d,
 
 	A90 = PI/2,
 
-	isTouch = 'ontouchstart' in window,
+	isTouch = 'ontouchstart' in typeof window !== "undefined" && window,
 
 	events = (isTouch) ? {start: 'touchstart', move: 'touchmove', end: 'touchend'}
 			: {start: 'mousedown', move: 'mousemove', end: 'mouseup'},
@@ -216,7 +216,7 @@ turnMethods = {
 
 		// Define constants
 		if (has3d===undefined) {
-			has3d = 'WebKitCSSMatrix' in window || 'MozPerspective' in document.body.style;
+			has3d = 'WebKitCSSMatrix' in typeof window !== "undefined" && window || 'MozPerspective' in document.body.style;
 			vendor = getPrefix();
 		}
 
